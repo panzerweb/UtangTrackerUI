@@ -341,6 +341,11 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="cIDField">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ab" green="be" red="7f" type="rgb"/>
+                        </Property>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -542,6 +547,9 @@
                     <Component class="javax.swing.JTextField" name="amountField">
                       <Properties>
                         <Property name="editable" type="boolean" value="false"/>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ab" green="be" red="7f" type="rgb"/>
+                        </Property>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -594,6 +602,9 @@
                           <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="qtySpinnerKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="qtyLabel1">
                       <Properties>

@@ -1,14 +1,15 @@
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
 import java.util.*;
 import java.util.Date;
 
 public class Main extends javax.swing.JFrame {
     private int customerId;
-
     
     
     CardLayout cardLayout;
@@ -17,6 +18,8 @@ public class Main extends javax.swing.JFrame {
         
         cardLayout = (CardLayout)(panelCards.getLayout());
         
+     
+ 
     }
 
     /**
@@ -204,6 +207,8 @@ public class Main extends javax.swing.JFrame {
         cNameLabel1.setText("Customer Name");
         cNameLabel1.setOpaque(true);
 
+        cIDField.setBackground(new java.awt.Color(127, 190, 171));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -331,6 +336,7 @@ public class Main extends javax.swing.JFrame {
         amountLabel.setOpaque(true);
 
         amountField.setEditable(false);
+        amountField.setBackground(new java.awt.Color(127, 190, 171));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -360,6 +366,11 @@ public class Main extends javax.swing.JFrame {
 
         qtySpinner.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         qtySpinner.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        qtySpinner.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                qtySpinnerKeyTyped(evt);
+            }
+        });
 
         qtyLabel1.setBackground(new java.awt.Color(106, 213, 203));
         qtyLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -828,6 +839,14 @@ public class Main extends javax.swing.JFrame {
     private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtnActionPerformed
         cardLayout.show(panelCards, "card6");
     }//GEN-LAST:event_listBtnActionPerformed
+
+    private void qtySpinnerKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_qtySpinnerKeyTyped
+        //restricting letter values
+        char key = evt.getKeyChar();
+        if(key < '0' || key > '9'){
+            evt.consume();
+        }
+    }//GEN-LAST:event_qtySpinnerKeyTyped
 
     
 
