@@ -38,6 +38,8 @@ public class RegisterForm extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
         RegisterPanel = new javax.swing.JPanel();
         container = new javax.swing.JPanel();
         fullNameField = new javax.swing.JTextField();
@@ -51,47 +53,59 @@ public class RegisterForm extends javax.swing.JFrame {
         loginBtn = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         passWordField = new javax.swing.JPasswordField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSplitPane1.setDividerLocation(100);
+        jSplitPane1.setDividerLocation(120);
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jPanel1.setBackground(new java.awt.Color(45, 225, 194));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 891, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        logo.setFont(new java.awt.Font("Corbel Light", 1, 48)); // NOI18N
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\logo\\logo.png")); // NOI18N
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 900, 120));
+
+        bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
+        jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 120));
 
         jSplitPane1.setTopComponent(jPanel1);
 
-        RegisterPanel.setBackground(new java.awt.Color(232, 232, 232));
+        RegisterPanel.setBackground(new java.awt.Color(106, 213, 203));
+        RegisterPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        container.setBackground(new java.awt.Color(106, 213, 203));
+        container.setBackground(new java.awt.Color(45, 225, 194));
+        container.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
         container.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        container.add(fullNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, 500, 36));
-        container.add(emailAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 500, 36));
+
+        fullNameField.setBackground(new java.awt.Color(45, 225, 194));
+        fullNameField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        container.add(fullNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, 500, 36));
+
+        emailAddressField.setBackground(new java.awt.Color(45, 225, 194));
+        emailAddressField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        container.add(emailAddressField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 500, 36));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Full Name");
-        container.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+        container.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Email Address");
-        container.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        container.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Password");
-        container.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, -1, -1));
+        container.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, -1, -1));
 
+        showPass.setBackground(new java.awt.Color(106, 213, 203));
         showPass.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\eye.png")); // NOI18N
         showPass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -103,8 +117,9 @@ public class RegisterForm extends javax.swing.JFrame {
                 showPassActionPerformed(evt);
             }
         });
-        container.add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 50, 40));
+        container.add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 50, 40));
 
+        hidePass.setBackground(new java.awt.Color(106, 213, 203));
         hidePass.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\hidden.png")); // NOI18N
         hidePass.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -113,49 +128,50 @@ public class RegisterForm extends javax.swing.JFrame {
         });
         container.add(hidePass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 50, 40));
 
+        signUpBtn.setBackground(new java.awt.Color(0, 204, 204));
+        signUpBtn.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        signUpBtn.setForeground(new java.awt.Color(51, 51, 51));
         signUpBtn.setText("Sign Up");
         signUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signUpBtnActionPerformed(evt);
             }
         });
-        container.add(signUpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 290, 130, 40));
+        container.add(signUpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 130, 40));
 
+        loginBtn.setBackground(new java.awt.Color(51, 255, 153));
+        loginBtn.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        loginBtn.setForeground(new java.awt.Color(51, 51, 51));
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
             }
         });
-        container.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 290, 140, 40));
+        container.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 140, 40));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel6.setText("Already have an account?");
-        container.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 310, 160, -1));
+        container.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 160, -1));
 
+        passWordField.setBackground(new java.awt.Color(45, 225, 194));
+        passWordField.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         passWordField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 passWordFieldKeyTyped(evt);
             }
         });
-        container.add(passWordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 450, 40));
+        container.add(passWordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 450, 40));
 
-        javax.swing.GroupLayout RegisterPanelLayout = new javax.swing.GroupLayout(RegisterPanel);
-        RegisterPanel.setLayout(RegisterPanelLayout);
-        RegisterPanelLayout.setHorizontalGroup(
-            RegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RegisterPanelLayout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
-        );
-        RegisterPanelLayout.setVerticalGroup(
-            RegisterPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RegisterPanelLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(container, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Register");
+        container.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 650, 40));
+
+        RegisterPanel.add(container, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 67, 668, 428));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\bg.png")); // NOI18N
+        RegisterPanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 600));
 
         jSplitPane1.setRightComponent(RegisterPanel);
 
@@ -310,6 +326,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel RegisterPanel;
+    private javax.swing.JLabel bg;
     private javax.swing.JPanel container;
     private javax.swing.JTextField emailAddressField;
     private javax.swing.JTextField fullNameField;
@@ -317,10 +334,13 @@ public class RegisterForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginBtn;
+    private javax.swing.JLabel logo;
     private javax.swing.JPasswordField passWordField;
     private javax.swing.JButton showPass;
     private javax.swing.JButton signUpBtn;

@@ -42,6 +42,8 @@ public class LoginForm extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
+        logo = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -53,42 +55,49 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         hidePassword = new javax.swing.JButton();
         passField = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSplitPane1.setDividerLocation(100);
+        jSplitPane1.setDividerLocation(120);
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jPanel1.setBackground(new java.awt.Color(45, 225, 194));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 895, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        logo.setFont(new java.awt.Font("Corbel Light", 1, 48)); // NOI18N
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\logo\\logo.png")); // NOI18N
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 900, 120));
+
+        bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
+        jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -2, 910, 120));
 
         jSplitPane1.setTopComponent(jPanel1);
 
         loginPanel.setBackground(new java.awt.Color(232, 232, 232));
+        loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(106, 213, 203));
+        jPanel2.setBackground(new java.awt.Color(45, 225, 194));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Email Address");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+
+        emailField.setBackground(new java.awt.Color(45, 225, 194));
         jPanel2.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 480, 40));
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Password");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
 
+        showPassword.setBackground(new java.awt.Color(106, 213, 203));
         showPassword.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\eye.png")); // NOI18N
         showPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -102,6 +111,8 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel2.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 60, 50));
 
+        loginBtn.setBackground(new java.awt.Color(0, 204, 204));
+        loginBtn.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,6 +121,8 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel2.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 120, 40));
 
+        signUpBtn.setBackground(new java.awt.Color(51, 255, 153));
+        signUpBtn.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         signUpBtn.setText("Signup");
         signUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +134,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel3.setText("Don't have an account?");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
 
+        hidePassword.setBackground(new java.awt.Color(106, 213, 203));
         hidePassword.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\hidden.png")); // NOI18N
         hidePassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -134,6 +148,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel2.add(hidePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 60, 50));
 
+        passField.setBackground(new java.awt.Color(45, 225, 194));
         passField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 passFieldKeyTyped(evt);
@@ -141,22 +156,15 @@ public class LoginForm extends javax.swing.JFrame {
         });
         jPanel2.add(passField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 420, 50));
 
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(104, Short.MAX_VALUE))
-        );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(115, Short.MAX_VALUE))
-        );
+        jLabel5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Login");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 10, 650, 40));
+
+        loginPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 67, 667, 437));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\bg.png")); // NOI18N
+        loginPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 600));
 
         jSplitPane1.setRightComponent(loginPanel);
 
@@ -179,7 +187,7 @@ public class LoginForm extends javax.swing.JFrame {
     private boolean passWordVisible = false;
     
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-       String EmailAddress, PasswordVar, query, passDb = null;
+       String FullName = null, EmailAddress, PasswordVar, query, passDb = null;
         String url = "jdbc:mysql://localhost:3306/utangtracker";
         String user = "root";
         String password = "";
@@ -204,6 +212,7 @@ public class LoginForm extends javax.swing.JFrame {
                     
                     while(rs.next()){
                         passDb = rs.getString("pass_word");
+                        FullName = rs.getString("full_name");
                         notFound = 1;
                     }
                     
@@ -212,6 +221,8 @@ public class LoginForm extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(this, "Logged In");
                         System.out.println("Success!");
                         Main main = new Main();
+                        //setProfile is the method we created in the Main.java to set the Jlabel
+                        main.setProfile(FullName);
                         main.setVisible(true);
                         setVisible(false);
                     } else {
@@ -318,16 +329,20 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bg;
     private javax.swing.JTextField emailField;
     private javax.swing.JButton hidePassword;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginBtn;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JLabel logo;
     private javax.swing.JPasswordField passField;
     private javax.swing.JButton showPassword;
     private javax.swing.JButton signUpBtn;
