@@ -21,11 +21,6 @@ public class Main extends javax.swing.JFrame {
      
         Transaction.setBackground(Color.cyan);
         
-        
-        int loggedInUserId = 2; // Replace with actual logged-in user ID
-        String fullName = retrieveFullName(loggedInUserId);
-        
-        profileName.setText(fullName);
     }
 
     
@@ -495,10 +490,11 @@ public class Main extends javax.swing.JFrame {
 
         panelCards.add(settingPanel, "card3");
 
-        searchPanel.setBackground(new java.awt.Color(232, 232, 232));
+        searchPanel.setBackground(new java.awt.Color(106, 213, 203));
         searchPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(106, 213, 203));
+        jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -517,8 +513,14 @@ public class Main extends javax.swing.JFrame {
         idLabelDisplay.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         idLabelDisplay.setText("ID :");
         jPanel3.add(idLabelDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, 51));
+
+        balanceFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
         jPanel3.add(balanceFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 460, 30));
+
+        nameFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
         jPanel3.add(nameFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 470, 30));
+
+        idFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
         jPanel3.add(idFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 470, 30));
 
         balanceDisplayLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -530,6 +532,8 @@ public class Main extends javax.swing.JFrame {
         paymentAmountLabel.setForeground(new java.awt.Color(51, 51, 51));
         paymentAmountLabel.setText("Payment Amount :");
         jPanel3.add(paymentAmountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 160, 51));
+
+        paymentFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
         jPanel3.add(paymentFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 390, 30));
 
         PaymentBtn.setText("Payment");
@@ -543,12 +547,15 @@ public class Main extends javax.swing.JFrame {
         searchPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 570, 350));
 
         jPanel8.setBackground(new java.awt.Color(106, 213, 203));
+        jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
         jPanel8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Search Customer");
         jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 270, 41));
+
+        searchField.setBackground(new java.awt.Color(127, 190, 171));
         jPanel8.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 480, 50));
 
         queryBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\search (1).png")); // NOI18N
@@ -659,35 +666,7 @@ public class Main extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private String retrieveFullName(int userId) {
-        String fullName = null;
-        try {
-            // Establish database connection
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "");
 
-            // Prepare SQL statement to retrieve full name based on user_id
-            String sql = "SELECT full_name FROM userdb WHERE user_id=?";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            pstmt.setInt(1, userId);
-
-            // Execute query
-            ResultSet rs = pstmt.executeQuery();
-
-            // Check if result set has data
-            if (rs.next()) {
-                fullName = rs.getString("full_name"); // Retrieve full name from result set
-            }
-
-            // Close resources
-            rs.close();
-            pstmt.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle exception
-        }
-        return fullName;
-    }
     
 
     
