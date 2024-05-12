@@ -98,6 +98,11 @@ public class RegisterForm extends javax.swing.JFrame {
                 showPassMousePressed(evt);
             }
         });
+        showPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showPassActionPerformed(evt);
+            }
+        });
         container.add(showPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 50, 40));
 
         hidePass.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\hidden.png")); // NOI18N
@@ -117,6 +122,11 @@ public class RegisterForm extends javax.swing.JFrame {
         container.add(signUpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(465, 290, 130, 40));
 
         loginBtn.setText("Login");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginBtnActionPerformed(evt);
+            }
+        });
         container.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 290, 140, 40));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
@@ -240,8 +250,8 @@ public class RegisterForm extends javax.swing.JFrame {
                 passWordField.setText("");
                 JOptionPane.showMessageDialog(this, "Account has been successfully created!");
                 
-                Main main = new Main();
-                main.setVisible(true);
+                LoginForm log = new LoginForm();
+                log.setVisible(true);
                 setVisible(false);
             }
         } catch (SQLException e) {
@@ -250,6 +260,16 @@ public class RegisterForm extends javax.swing.JFrame {
             Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_signUpBtnActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+            LoginForm log = new LoginForm();
+            log.setVisible(true);
+            setVisible(false);
+    }//GEN-LAST:event_loginBtnActionPerformed
+
+    private void showPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showPassActionPerformed
 
     
 
