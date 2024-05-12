@@ -1,5 +1,8 @@
 
+import java.awt.HeadlessException;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -158,6 +161,7 @@ public class RegisterForm extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
     private boolean passWordVisible = false;
@@ -204,7 +208,7 @@ public class RegisterForm extends javax.swing.JFrame {
     }//GEN-LAST:event_hidePassMousePressed
 
     private void signUpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpBtnActionPerformed
-        String fullName, emailAddress, passwordVar;
+        String fullName, emailAddress, passwordVar, query;
         String url = "jdbc:mysql://localhost:3306/utangtracker";
         String user = "root";
         String password = "";
@@ -220,9 +224,30 @@ public class RegisterForm extends javax.swing.JFrame {
             }else if("".equals(passWordField.getText())){
                 JOptionPane.showMessageDialog(this, "Password is Required");
                 
+            }else{
+                fullName = fullNameField.getText();
+                emailAddress = emailAddressField.getText();
+                passwordVar = passWordField.getText();
+                System.out.println(passwordVar);
+                
+                query = "INSERT INTO userdb (full_name, email_ad, pass_word) VALUES ('" + fullName + "', '" + emailAddress + "', '" + passwordVar + "')";
+
+                
+                st.executeUpdate(query);
+                
+                fullNameField.setText("");
+                emailAddressField.setText("");
+                passWordField.setText("");
+                JOptionPane.showMessageDialog(this, "Account has been successfully created!");
+                
+                Main main = new Main();
+                main.setVisible(true);
+                setVisible(false);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Error" + e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_signUpBtnActionPerformed
 
