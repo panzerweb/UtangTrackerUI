@@ -2,13 +2,18 @@
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
 import java.util.*;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main extends javax.swing.JFrame {
+    private Map<Integer, Double> customerBalances;
+    
     private int customerId;
     private String emailAd;
     
@@ -20,6 +25,8 @@ public class Main extends javax.swing.JFrame {
         
      
         Transaction.setBackground(Color.cyan);
+        customerBalances = new HashMap<>();
+
         
     }
 
@@ -46,10 +53,8 @@ public class Main extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
         calculateTransaction = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        cNameLabel = new javax.swing.JLabel();
         cNameField = new javax.swing.JTextField();
         cNameLabel1 = new javax.swing.JLabel();
-        cIDField = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         itemNameLabel = new javax.swing.JLabel();
         itemNameField = new javax.swing.JTextField();
@@ -66,22 +71,22 @@ public class Main extends javax.swing.JFrame {
         settingPanel = new javax.swing.JPanel();
         searchPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        NameDisplayLabel1 = new javax.swing.JLabel();
-        idLabelDisplay = new javax.swing.JLabel();
         balanceFieldDisplay = new javax.swing.JTextField();
-        nameFieldDisplay = new javax.swing.JTextField();
-        idFieldDisplay = new javax.swing.JTextField();
         balanceDisplayLabel1 = new javax.swing.JLabel();
-        paymentAmountLabel = new javax.swing.JLabel();
-        paymentFieldDisplay = new javax.swing.JTextField();
-        PaymentBtn = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         searchField = new javax.swing.JTextField();
         queryBtn = new javax.swing.JButton();
         profilePanel = new javax.swing.JPanel();
         listPanel = new javax.swing.JPanel();
+        searchQueryField = new javax.swing.JTextField();
+        searchQueryBtn = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listTable = new javax.swing.JTable();
+        deleteMultipleRows = new javax.swing.JButton();
+        deleteAllRows = new javax.swing.JButton();
         Navigation = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -241,13 +246,6 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(106, 213, 203));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
 
-        cNameLabel.setBackground(new java.awt.Color(106, 213, 203));
-        cNameLabel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        cNameLabel.setForeground(new java.awt.Color(51, 51, 51));
-        cNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cNameLabel.setText("Customer ID");
-        cNameLabel.setOpaque(true);
-
         cNameField.setBackground(new java.awt.Color(127, 190, 171));
         cNameField.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
@@ -258,38 +256,27 @@ public class Main extends javax.swing.JFrame {
         cNameLabel1.setText("Customer Name");
         cNameLabel1.setOpaque(true);
 
-        cIDField.setBackground(new java.awt.Color(127, 190, 171));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(cIDField))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(cNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cNameLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(14, 14, 14))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(cNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(cNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cNameField)
-                    .addComponent(cIDField))
-                .addGap(0, 58, Short.MAX_VALUE))
+                .addComponent(cNameLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 46, Short.MAX_VALUE))
         );
 
         transactionPnl.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
@@ -497,52 +484,15 @@ public class Main extends javax.swing.JFrame {
         jPanel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Direct Payment");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 312, 51));
-
-        NameDisplayLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        NameDisplayLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        NameDisplayLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        NameDisplayLabel1.setText("Name :");
-        jPanel3.add(NameDisplayLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 60, 51));
-
-        idLabelDisplay.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        idLabelDisplay.setForeground(new java.awt.Color(51, 51, 51));
-        idLabelDisplay.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        idLabelDisplay.setText("ID :");
-        jPanel3.add(idLabelDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 60, 51));
-
+        balanceFieldDisplay.setEditable(false);
         balanceFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
-        jPanel3.add(balanceFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 460, 30));
+        balanceFieldDisplay.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jPanel3.add(balanceFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 520, 60));
 
-        nameFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
-        jPanel3.add(nameFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 470, 30));
-
-        idFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
-        jPanel3.add(idFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 470, 30));
-
-        balanceDisplayLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        balanceDisplayLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         balanceDisplayLabel1.setForeground(new java.awt.Color(51, 51, 51));
         balanceDisplayLabel1.setText("Balance :");
-        jPanel3.add(balanceDisplayLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 90, 51));
-
-        paymentAmountLabel.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        paymentAmountLabel.setForeground(new java.awt.Color(51, 51, 51));
-        paymentAmountLabel.setText("Payment Amount :");
-        jPanel3.add(paymentAmountLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 160, 51));
-
-        paymentFieldDisplay.setBackground(new java.awt.Color(127, 190, 171));
-        jPanel3.add(paymentFieldDisplay, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 390, 30));
-
-        PaymentBtn.setText("Payment");
-        PaymentBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PaymentBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(PaymentBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, 140, 50));
+        jPanel3.add(balanceDisplayLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, 51));
 
         searchPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 570, 350));
 
@@ -556,6 +506,7 @@ public class Main extends javax.swing.JFrame {
         jPanel8.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 270, 41));
 
         searchField.setBackground(new java.awt.Color(127, 190, 171));
+        searchField.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jPanel8.add(searchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 480, 50));
 
         queryBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\search (1).png")); // NOI18N
@@ -585,15 +536,93 @@ public class Main extends javax.swing.JFrame {
 
         panelCards.add(profilePanel, "card5");
 
+        listPanel.setBackground(new java.awt.Color(106, 213, 203));
+
+        searchQueryBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\search (1).png")); // NOI18N
+        searchQueryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchQueryBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel6.setText("Search");
+
+        jLabel7.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        jLabel7.setText("Transaction History");
+
+        listTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item id", "Item name", "Price", "Quantity", "Amount", "Date"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        listTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(listTable);
+
+        deleteMultipleRows.setText("Delete Item");
+        deleteMultipleRows.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMultipleRowsActionPerformed(evt);
+            }
+        });
+
+        deleteAllRows.setText("Delete All");
+
         javax.swing.GroupLayout listPanelLayout = new javax.swing.GroupLayout(listPanel);
         listPanel.setLayout(listPanelLayout);
         listPanelLayout.setHorizontalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 669, Short.MAX_VALUE)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(listPanelLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(listPanelLayout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel7))
+                    .addGroup(listPanelLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(listPanelLayout.createSequentialGroup()
+                                .addComponent(searchQueryField, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(searchQueryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(listPanelLayout.createSequentialGroup()
+                                .addComponent(deleteMultipleRows, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(deleteAllRows, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
         listPanelLayout.setVerticalGroup(
             listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 602, Short.MAX_VALUE)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchQueryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchQueryField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(deleteAllRows, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                    .addComponent(deleteMultipleRows, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(277, Short.MAX_VALUE))
         );
 
         panelCards.add(listPanel, "card6");
@@ -692,130 +721,91 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-            int customer_id = Integer.parseInt(cIDField.getText());
-            String customer_name = cNameField.getText();           
+            String customer_name = cNameField.getText();
             String item_name = itemNameField.getText();
             int price = Integer.parseInt(priceField.getText());
             int qty = (int) qtySpinner.getValue();
-            // Adding transaction date
-            Date date = new Date(); // Assuming you're using the current date as the transaction date
+            int amount = price * qty;
             
-            int amount = qty * price;
-            int balance = 0;
-            String status = "Pending";
- 
+            Date date = new Date();
 
-            String insert = "INSERT INTO `utangtracker`.`transactionTable` (`customer_id`, `customer_name`, `item_purchased`, `price`, `quantity`, `transaction_date`, `transaction_amount`, `balance`, `status`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+            // SQL statements
+            String findCustomer = "SELECT customer_id FROM customer_table WHERE name = ?";
+            String insertCustomer = "INSERT INTO customer_table (name) VALUES (?)";
+            String insertItem = "INSERT INTO item_table (customer_id, item_name, price, quantity, amount,purchase_date) VALUES (?, ?, ?, ?, ?,?)";
 
             Connection conn = null;
+            PreparedStatement stmtFindCustomer = null;
+            PreparedStatement stmtCustomer = null;
+            PreparedStatement stmtItem = null;
+            ResultSet rs = null;
+
             try {
                 // Establish a connection
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "");
                 System.out.println("Connected");
-
-                // Prepare statement
-                PreparedStatement stmt = conn.prepareStatement(insert);
-
-                // Set parameters
-                stmt.setInt(1, customer_id);
-                stmt.setString(2, customer_name);
-                stmt.setString(3, item_name);
-                stmt.setInt(4, price);
-                stmt.setInt(5, qty);
-                stmt.setDate(6, new java.sql.Date(date.getTime()));
-                stmt.setInt(7, amount);
-                stmt.setInt(8, balance);
-                stmt.setString(9, status);
-
-                // Execute update
-                stmt.executeUpdate();
                 
-                updateCustomerBalance(conn, customer_id, amount);
+                // Check if customer already exists
+                stmtFindCustomer = conn.prepareStatement(findCustomer);
+                stmtFindCustomer.setString(1, customer_name);
+                rs = stmtFindCustomer.executeQuery();
+
+                int customerId;
+                if (rs.next()) {
+                    // Customer exists, get the customer_id
+                    customerId = rs.getInt("customer_id");
+                } else {
+                    // Customer does not exist, insert a new customer
+                    stmtCustomer = conn.prepareStatement(insertCustomer, Statement.RETURN_GENERATED_KEYS);
+                    stmtCustomer.setString(1, customer_name);
+                    stmtCustomer.executeUpdate();
+
+                    // Get the generated customer_id
+                    rs = stmtCustomer.getGeneratedKeys();
+                    if (rs.next()) {
+                        customerId = rs.getInt(1);
+                    } else {
+                        throw new SQLException("Creating customer failed, no ID obtained.");
+                    }
+                }
+
+                // Insert the item
+                stmtItem = conn.prepareStatement(insertItem);
+                stmtItem.setInt(1, customerId);
+                stmtItem.setString(2, item_name);
+                stmtItem.setInt(3, price);
+                stmtItem.setInt(4, qty);
+                stmtItem.setInt(5, amount);
+                stmtItem.setDate(6, new java.sql.Date(date.getTime()));
+                stmtItem.executeUpdate();
 
                 JOptionPane.showMessageDialog(this, "Data Inserted Successfully");
-                
-               itemNameField.setText("");
-               priceField.setText("");
-               qtySpinner.setValue(0);
-               amountField.setText("");
-                
+
+                // Clear fields
+                itemNameField.setText("");
+                priceField.setText("");
+                qtySpinner.setValue(0);
+                amountField.setText("");
+
             } catch (SQLException e) {
                 System.err.println(e);
             } finally {
                 try {
-                    if (conn != null) {
-                        conn.close();
-                    }
+                    if (rs != null) rs.close();
+                    if (stmtItem != null) stmtItem.close();
+                    if (stmtCustomer != null) stmtCustomer.close();
+                    if (conn != null) conn.close();
                 } catch (SQLException e) {
                     System.err.println(e);
                 }
             }
-            
+
     }//GEN-LAST:event_addBtnActionPerformed
 
-        // Update customer balance
-    private void updateCustomerBalance(Connection conn, int customer_id, int transaction_amount) throws SQLException {
-        try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "");
-            Statement stmt = conn.createStatement();
-            String sql = "SELECT customer_id, SUM(transaction_amount) AS total_balance FROM transactionTable GROUP BY customer_id";
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                customer_id = rs.getInt("customer_id");
-                int total_balance = rs.getInt("total_balance");
-                
-                // Update total balance in the database
-                updateCustomerTotalBalance(conn, customer_id, total_balance);
-            }
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle exceptions
-        }
-    }
-    
-        // Update total balance for a customer in the database
-    private void updateCustomerTotalBalance(Connection conn, int customer_id, int total_balance) throws SQLException {
-        String sql = "UPDATE transactionTable SET balance = ? WHERE customer_id = ?";
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setInt(1, total_balance);
-        pstmt.setInt(2, customer_id);
-        pstmt.executeUpdate();
-    }
 
-    // Get current balance of a customer from the database
-    private int getCurrentBalance(Connection conn, int customer_id) throws SQLException {
-        int current_balance = 0;
-        String sql = "SELECT balance FROM transactionTable WHERE customer_id = ?";
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-        pstmt.setInt(1, customer_id);
-        ResultSet rs = pstmt.executeQuery();
-        if (rs.next()) {
-            current_balance = rs.getInt("balance");
-        }
-        return current_balance;
-    }
-
-    // Calculate total balance for each customer by summing up all transaction amounts
-    public void calculateTotalBalances() {
-        try {
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database", "username", "password");
-            Statement stmt = conn.createStatement();
-            String sql = "SELECT customer_id, SUM(transaction_amount) AS balance FROM transactionTable GROUP BY customer_id";
-            ResultSet rs = stmt.executeQuery(sql);
-            while (rs.next()) {
-                int customer_id = rs.getInt("customer_id");
-                int total_balance = rs.getInt("balance");
-                System.out.println("Customer ID: " + customer_id + ", Total Balance: " + total_balance);
-            }
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle exceptions
-        }
-    }
     
+
+
     private void priceFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceFieldKeyTyped
         //restricting letter values
         char key = evt.getKeyChar();
@@ -837,75 +827,39 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_calculateTransactionActionPerformed
 
     private void queryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryBtnActionPerformed
-        // Retrieve the input from the search field
-        String searchInput = searchField.getText().trim();
+               String searchInput = searchField.getText();
 
-        // Execute a database query to search for the customer based on the input
-        // Replace "your_database" with your actual database name and "your_table" with your actual table name
-        String query = "SELECT * FROM transactionTable WHERE customer_name = ? OR customer_id = ?";
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "");
-             PreparedStatement pstmt = conn.prepareStatement(query)) {
+               String url = "jdbc:mysql://localhost:3306/utangtracker";
+               String user = "root";
+               String password = "";
 
-            // Set parameters for the query
-            pstmt.setString(1, searchInput); // Assuming searchInput can be either customer name or ID
-            pstmt.setString(2, searchInput); // Assuming searchInput can be either customer name or ID
+               String calculateAmount = "SELECT SUM(item_table.amount) AS total_amount FROM item_table " +
+                         "INNER JOIN customer_table ON item_table.customer_id = customer_table.customer_id " +
+                         "WHERE customer_table.name = ? OR item_table.customer_id = ?";
+               try{
+                   Class.forName("com.mysql.cj.jdbc.Driver");
+                   Connection conn = DriverManager.getConnection(url, user, password);
+                   PreparedStatement st = conn.prepareStatement(calculateAmount);
 
-            // Execute the query
-            ResultSet rs = pstmt.executeQuery();
+                   st.setString(1, searchInput);
+                   st.setString(2, searchInput);
 
-            // Check if a customer is found
-            if (rs.next()) {
-                // Customer found, retrieve customer information
-                String customerName = rs.getString("customer_name");
-                customerId = rs.getInt("customer_id");
-                int customerBalance = rs.getInt("balance");
+                   try (ResultSet rs = st.executeQuery()) {
+                       if (rs.next()) {
+                           int totalAmount = rs.getInt("total_amount");
+                           System.out.println("Total Amount : " + totalAmount);
 
-                // Display customer information in the appropriate fields or labels
-                nameFieldDisplay.setText(customerName);
-                idFieldDisplay.setText(String.valueOf(customerId));
-                balanceFieldDisplay.setText(String.valueOf(customerBalance));
-
-            } else {
-                // Customer not found, display error message
-                JOptionPane.showMessageDialog(this, "Customer not found.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (SQLException e) {
-            // Handle database errors
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error executing database query.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+                           balanceFieldDisplay.setText(String.valueOf(totalAmount));
+                       }
+                   }
+               }
+               catch(SQLException e){
+                   e.printStackTrace();
+               } catch (ClassNotFoundException ex) {
+                   Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+               }
     }//GEN-LAST:event_queryBtnActionPerformed
 
-    private void PaymentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PaymentBtnActionPerformed
-            // Retrieve the payment amount and payment date entered by the user
-            int paymentAmount = Integer.parseInt(paymentFieldDisplay.getText());
-
-            // Subtract the payment amount from the customer's current balance
-            int currentBalance = Integer.parseInt(balanceFieldDisplay.getText()); // Extract current balance from the label
-            int newBalance = currentBalance - paymentAmount;
-
-            // Update the customer's balance in the database
-            try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "")) {
-                String updateQuery = "UPDATE transactionTable SET balance = ? WHERE customer_id = ?";
-                PreparedStatement pstmt = conn.prepareStatement(updateQuery);
-                pstmt.setInt(1, newBalance);
-                pstmt.setInt(2, customerId); // Assuming customerId is the ID of the selected customer
-                pstmt.executeUpdate();
-                
-                nameFieldDisplay.setText("");
-                idFieldDisplay.setText("");
-                balanceFieldDisplay.setText("");
-                paymentFieldDisplay.setText("");
-
-                // Optionally, update the payment status of relevant transactions if needed
-
-                JOptionPane.showMessageDialog(this, "Payment recorded successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } catch (SQLException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Error recording payment.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-    }//GEN-LAST:event_PaymentBtnActionPerformed
 
     private void listBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listBtnActionPerformed
         cardLayout.show(panelCards, "card6");
@@ -951,6 +905,86 @@ public class Main extends javax.swing.JFrame {
     private void jLabel3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel3FocusGained
 
     }//GEN-LAST:event_jLabel3FocusGained
+
+    private void searchQueryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchQueryBtnActionPerformed
+            // Get the search query from the text field
+            String searchText = searchQueryField.getText();
+
+            // Check if the search field is empty
+            if (!searchText.isEmpty()) {
+                try {
+                    // Establish a connection to the MySQL database
+                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "");
+
+                    // Prepare a SQL query to search for records matching the name
+                    // Prepare a SQL query to search for records matching the name or customer ID
+                    String query = "SELECT i.* FROM item_table i " +
+                                   "INNER JOIN customer_table c ON i.customer_id = c.customer_id " +
+                                   "WHERE c.name = ? OR i.customer_id = ?";
+
+                    try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                        System.out.println("Search Text: " + searchText); // Debugging statement
+                        // Set the search parameter in the query
+                        preparedStatement.setString(1, searchText);
+                        preparedStatement.setString(2, searchText);
+
+                        // Execute the query
+                        ResultSet resultSet = preparedStatement.executeQuery();
+
+                        // Clear existing rows in the table
+                        DefaultTableModel model = (DefaultTableModel) listTable.getModel();
+                        model.setRowCount(0);
+
+                        // Populate the table with the retrieved data
+                        while (resultSet.next()) {
+                            Object[] row = new Object[7]; // Assuming there are 6 columns in utangTable
+                            row[0] = resultSet.getInt("item_id");
+                            row[1] = resultSet.getString("item_name");
+                            row[2] = resultSet.getInt("price");
+                            row[3] = resultSet.getInt("quantity");
+                            row[4] = resultSet.getInt("amount");
+                            row[5] = resultSet.getDate("purchase_date");
+                            model.addRow(row);
+                        }
+                    }
+                    // Close the connection
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                // If the search field is empty, do nothing or display an error message
+            }
+    }//GEN-LAST:event_searchQueryBtnActionPerformed
+
+    private void deleteMultipleRowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMultipleRowsActionPerformed
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "");
+
+                DefaultTableModel model = (DefaultTableModel) listTable.getModel();
+                int[] selectedRows = listTable.getSelectedRows();
+
+                for (int i = selectedRows.length - 1; i >= 0; i--) {
+                    int row = selectedRows[i];
+                    String value = model.getValueAt(row, 0).toString();
+                    String query = "DELETE FROM item_table WHERE item_id = " + value;
+
+                    PreparedStatement pst = conn.prepareStatement(query);
+                    pst.executeUpdate();
+
+                    model.removeRow(row);
+                }
+
+                JOptionPane.showMessageDialog(null, "Deleted Successfully");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, e);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_deleteMultipleRowsActionPerformed
+
+    
 
      private void resetTabBorders() {
     // Reset the background color of all tab buttons
@@ -1028,9 +1062,7 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel NameDisplayLabel1;
     private javax.swing.JPanel Navigation;
-    private javax.swing.JButton PaymentBtn;
     private javax.swing.JButton Transaction;
     private javax.swing.JButton about;
     private javax.swing.JPanel aboutPnl;
@@ -1040,20 +1072,19 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel balanceDisplayLabel1;
     private javax.swing.JTextField balanceFieldDisplay;
     private javax.swing.JLabel bg;
-    private javax.swing.JTextField cIDField;
     private javax.swing.JTextField cNameField;
-    private javax.swing.JLabel cNameLabel;
     private javax.swing.JLabel cNameLabel1;
     private javax.swing.JButton calculateTransaction;
-    private javax.swing.JTextField idFieldDisplay;
-    private javax.swing.JLabel idLabelDisplay;
+    private javax.swing.JButton deleteAllRows;
+    private javax.swing.JButton deleteMultipleRows;
     private javax.swing.JTextField itemNameField;
     private javax.swing.JLabel itemNameLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -1061,14 +1092,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton listBtn;
     private javax.swing.JPanel listPanel;
-    private javax.swing.JTextField nameFieldDisplay;
+    private javax.swing.JTable listTable;
     private javax.swing.JPanel navigationbar;
     private javax.swing.JPanel panelCards;
-    private javax.swing.JLabel paymentAmountLabel;
-    private javax.swing.JTextField paymentFieldDisplay;
     private javax.swing.JTextField priceField;
     private javax.swing.JLabel priceLabel;
     private javax.swing.JButton profile;
@@ -1080,6 +1110,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchField;
     private javax.swing.JPanel searchPanel;
+    private javax.swing.JButton searchQueryBtn;
+    private javax.swing.JTextField searchQueryField;
     private javax.swing.JPanel settingPanel;
     private javax.swing.JButton settingPnl;
     private javax.swing.JPanel transactionPnl;
