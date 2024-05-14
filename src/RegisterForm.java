@@ -68,6 +68,11 @@ public class RegisterForm extends javax.swing.JFrame {
         logo.setFont(new java.awt.Font("Corbel Light", 1, 48)); // NOI18N
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\logo\\logo.png")); // NOI18N
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
         jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 900, 120));
 
         bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
@@ -286,6 +291,12 @@ public class RegisterForm extends javax.swing.JFrame {
     private void showPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_showPassActionPerformed
+
+    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
+       Homepage home = new Homepage();
+       home.setVisible(true);
+       setVisible(false);
+    }//GEN-LAST:event_logoMouseClicked
 
     
 

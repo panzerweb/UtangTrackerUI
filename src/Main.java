@@ -494,7 +494,7 @@ public class Main extends javax.swing.JFrame {
         balanceDisplayLabel1.setText("Balance :");
         jPanel3.add(balanceDisplayLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 170, 51));
 
-        searchPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 570, 350));
+        searchPanel.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 570, 150));
 
         jPanel8.setBackground(new java.awt.Color(106, 213, 203));
         jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
@@ -537,6 +537,8 @@ public class Main extends javax.swing.JFrame {
         panelCards.add(profilePanel, "card5");
 
         listPanel.setBackground(new java.awt.Color(106, 213, 203));
+
+        searchQueryField.setBackground(new java.awt.Color(127, 190, 171));
 
         searchQueryBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\search (1).png")); // NOI18N
         searchQueryBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -599,7 +601,7 @@ public class Main extends javax.swing.JFrame {
                                 .addComponent(searchQueryField, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(searchQueryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(listPanelLayout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listPanelLayout.createSequentialGroup()
                                 .addComponent(deleteMultipleRows, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(deleteAllRows, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -617,12 +619,12 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(searchQueryBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchQueryField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(deleteAllRows, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                    .addComponent(deleteMultipleRows, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(277, Short.MAX_VALUE))
+                    .addComponent(deleteAllRows, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(deleteMultipleRows, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
         );
 
         panelCards.add(listPanel, "card6");

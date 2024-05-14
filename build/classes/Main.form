@@ -754,7 +754,7 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="30" y="150" width="570" height="350"/>
+                      <AbsoluteConstraints x="30" y="150" width="570" height="150"/>
                     </Constraint>
                   </Constraints>
 
@@ -928,7 +928,7 @@
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="searchQueryBtn" min="-2" pref="53" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
                                           <Component id="deleteMultipleRows" min="-2" pref="140" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="deleteAllRows" min="-2" pref="132" max="-2" attributes="0"/>
@@ -953,19 +953,24 @@
                               <Component id="searchQueryField" alignment="0" min="-2" pref="43" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="323" max="-2" attributes="0"/>
+                          <EmptySpace pref="30" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="deleteAllRows" pref="49" max="32767" attributes="0"/>
-                              <Component id="deleteMultipleRows" max="32767" attributes="0"/>
+                              <Component id="deleteAllRows" max="32767" attributes="0"/>
+                              <Component id="deleteMultipleRows" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="277" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JTextField" name="searchQueryField">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ab" green="be" red="7f" type="rgb"/>
+                    </Property>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JButton" name="searchQueryBtn">
                   <Properties>
