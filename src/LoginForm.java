@@ -1,5 +1,6 @@
 
 import com.mysql.cj.jdbc.result.ResultSetFactory;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -155,6 +156,9 @@ public class LoginForm extends javax.swing.JFrame {
 
         passField.setBackground(new java.awt.Color(45, 225, 194));
         passField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passFieldKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 passFieldKeyTyped(evt);
             }
@@ -188,6 +192,7 @@ public class LoginForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //Matching the visibility
     private boolean iconVisible = false;
     private boolean passWordVisible = false;
     
@@ -218,6 +223,7 @@ public class LoginForm extends javax.swing.JFrame {
                     while(rs.next()){
                         passDb = rs.getString("pass_word");
                         FullName = rs.getString("full_name");
+                        EmailAddress = rs.getString("email_ad");
                         notFound = 1;
                     }
                     
@@ -228,6 +234,9 @@ public class LoginForm extends javax.swing.JFrame {
                         Main main = new Main();
                         //setProfile is the method we created in the Main.java to set the Jlabel
                         main.setProfile(FullName);
+                        main.setFullName(FullName);
+                        main.setEmail(EmailAddress);
+                        main.setPassword(passDb);
                         main.setVisible(true);
                         setVisible(false);
                     } else {
@@ -303,6 +312,67 @@ public class LoginForm extends javax.swing.JFrame {
        home.setVisible(true);
        setVisible(false);
     }//GEN-LAST:event_logoMouseClicked
+
+    private void passFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passFieldKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+                   String FullName = null, EmailAddress, PasswordVar, query, passDb = null;
+        String url = "jdbc:mysql://localhost:3306/utangtracker";
+        String user = "root";
+        String password = "";
+        int notFound = 0;
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(url, user, password);
+            Statement st = con.createStatement();
+            if("".equals(emailField.getText())){
+                JOptionPane.showMessageDialog(this, "Email Address is Required");
+            }else if("".equals(passField.getText())){
+                JOptionPane.showMessageDialog(this, "Password is Required");
+                
+            }else{
+                EmailAddress = emailField.getText();
+                PasswordVar = passField.getText();
+                System.out.println(PasswordVar);
+                
+                query = "SELECT * FROM userdb WHERE email_ad = '"+ EmailAddress+"'";
+                ResultSet rs = st.executeQuery(query);
+                    
+                    while(rs.next()){
+                        passDb = rs.getString("pass_word");
+                        FullName = rs.getString("full_name");
+                        EmailAddress = rs.getString("email_ad");
+                        notFound = 1;
+                    }
+                    
+                    if (notFound == 1 && (PasswordVar == null ? passDb == null : PasswordVar.equals(passDb))) {
+                        
+                        JOptionPane.showMessageDialog(this, "Logged In");
+                        System.out.println("Success!");
+                        Main main = new Main();
+                        //setProfile is the method we created in the Main.java to set the Jlabel
+                        main.setProfile(FullName);
+                        main.setFullName(FullName);
+                        main.setEmail(EmailAddress);
+                        main.setPassword(passDb);
+                        main.setVisible(true);
+                        setVisible(false);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Incorrect Email or Password");
+                    }
+
+               
+                passField.setText("");
+
+                
+            }
+        } catch (SQLException e) {
+            System.out.println("Error" + e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }//GEN-LAST:event_passFieldKeyPressed
 
     /**
      * @param args the command line arguments
