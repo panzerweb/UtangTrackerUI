@@ -1228,10 +1228,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-            String customer_name = cNameField.getText();
-            String item_name = itemNameField.getText();
-            int price = Integer.parseInt(priceField.getText());
-            int qty = (int) qtySpinner.getValue();
+            String customer_name = cNameField.getText().trim();
+            String item_name = itemNameField.getText().trim();
+            String priceInput = priceField.getText().trim();
+            String qtyInput = qtySpinner.getValue().toString().trim();
+
+            if (customer_name.isEmpty() || item_name.isEmpty() || priceInput.isEmpty() || qtyInput.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "INVAlID FORMAT : Please Complete The Form");
+                return;
+            }
+
+            int price = Integer.parseInt(priceInput);
+            int qty = Integer.parseInt(qtyInput);
             int amount = price * qty;
             
             Date date = new Date();
@@ -1247,7 +1255,9 @@ public class Main extends javax.swing.JFrame {
             PreparedStatement stmtItem = null;
             ResultSet rs = null;
 
+
             try {
+                
                 // Establish a connection
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/utangtracker", "root", "");
                 System.out.println("Connected");
@@ -1295,7 +1305,8 @@ public class Main extends javax.swing.JFrame {
                 amountField.setText("");
 
             } catch (SQLException e) {
-                System.err.println(e);
+      
+                System.err.println("Error : " + e);
             } finally {
                 try {
                     if (rs != null) rs.close();
@@ -1303,7 +1314,7 @@ public class Main extends javax.swing.JFrame {
                     if (stmtCustomer != null) stmtCustomer.close();
                     if (conn != null) conn.close();
                 } catch (SQLException e) {
-                    System.err.println(e);
+                    System.err.println("Error : " + e);
                 }
             }
 
@@ -1334,8 +1345,13 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_calculateTransactionActionPerformed
 
     private void queryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryBtnActionPerformed
-               String searchInput = searchField.getText();
+               String searchInput = searchField.getText().trim();
 
+               if (searchInput.isEmpty()) {
+                   JOptionPane.showMessageDialog(this, "INVALID FORMAT : Please Input Name or ID");
+            
+                }
+               
                String url = "jdbc:mysql://localhost:3306/utangtracker";
                String user = "root";
                String password = "";
@@ -1472,18 +1488,30 @@ public class Main extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel) listTable.getModel();
                 int[] selectedRows = listTable.getSelectedRows();
 
+                String[] options = {"Yes", "No"};
+                int response = JOptionPane.showOptionDialog(null, "Do you Wish to Delete Selection?", "UTS", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+
                 for (int i = selectedRows.length - 1; i >= 0; i--) {
-                    int row = selectedRows[i];
-                    String value = model.getValueAt(row, 0).toString();
-                    String query = "DELETE FROM item_table WHERE item_id = " + value;
 
-                    PreparedStatement pst = conn.prepareStatement(query);
-                    pst.executeUpdate();
+                    if (response == JOptionPane.NO_OPTION) {
+                        JOptionPane.showMessageDialog(this, "Understood");
+                        break;
+                    }
+                    else{
+                        int row = selectedRows[i];
+                        String value = model.getValueAt(row, 0).toString();
+                        String query = "DELETE FROM item_table WHERE item_id = " + value;
 
-                    model.removeRow(row);
+                        PreparedStatement pst = conn.prepareStatement(query);
+                        pst.executeUpdate();
+                        model.removeRow(row);
+                        
+                        JOptionPane.showMessageDialog(null, "Deleted Successfully");
+                    }
+                    
                 }
 
-                JOptionPane.showMessageDialog(null, "Deleted Successfully");
+                
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, e);
             } catch (ClassNotFoundException ex) {
@@ -1542,9 +1570,18 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordfieldActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
-        Homepage home = new Homepage();
-        home.setVisible(true);
-        setVisible(false);
+        String[] options = {"Yes", "No"};
+        int response = JOptionPane.showOptionDialog(null, "Do you Wish To Log Out?", "Logging Out", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        
+        if (response == JOptionPane.YES_OPTION) {
+            Homepage home = new Homepage();
+            home.setVisible(true);
+            setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Logging Out Aborted!");
+        }
+
+        
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void cNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cNameFieldActionPerformed
