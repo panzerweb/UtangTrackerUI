@@ -29,46 +29,24 @@ public class Homepage extends javax.swing.JFrame {
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        navigation = new javax.swing.JPanel();
-        logo = new javax.swing.JLabel();
-        navbg = new javax.swing.JLabel();
         mainframe = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         registerPressBtn = new javax.swing.JButton();
         loginPressBtn = new javax.swing.JButton();
-        mainbg = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        navigation = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
+        navbg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jSplitPane1.setDividerLocation(120);
+        jSplitPane1.setDividerLocation(300);
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\logo\\logo.png")); // NOI18N
-        navigation.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 120));
-
-        navbg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
-        navigation.add(navbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 120));
-
-        jSplitPane1.setTopComponent(navigation);
-
         mainframe.setBackground(new java.awt.Color(153, 153, 153));
         mainframe.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LOGIN");
-        mainframe.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 190, 40));
-
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("REGISTER");
-        mainframe.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 190, 40));
 
         registerPressBtn.setBackground(new java.awt.Color(0, 153, 102));
         registerPressBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\web.png")); // NOI18N
@@ -86,7 +64,7 @@ public class Homepage extends javax.swing.JFrame {
                 registerPressBtnActionPerformed(evt);
             }
         });
-        mainframe.add(registerPressBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 210, 260));
+        mainframe.add(registerPressBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 210, 150));
 
         loginPressBtn.setBackground(new java.awt.Color(0, 204, 204));
         loginPressBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\login (1).png")); // NOI18N
@@ -104,12 +82,32 @@ public class Homepage extends javax.swing.JFrame {
                 loginPressBtnActionPerformed(evt);
             }
         });
-        mainframe.add(loginPressBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 210, 260));
+        mainframe.add(loginPressBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 210, 150));
 
-        mainbg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\bg.png")); // NOI18N
-        mainframe.add(mainbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 510));
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\bg.png")); // NOI18N
+        mainframe.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 300));
 
         jSplitPane1.setRightComponent(mainframe);
+
+        navigation.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images\\2.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+        navigation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 310, 40));
+
+        logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images\\1.png")); // NOI18N
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
+        navigation.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 380, 260));
+
+        navbg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
+        navigation.add(navbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 300));
+
+        jSplitPane1.setTopComponent(navigation);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,28 +117,12 @@ public class Homepage extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSplitPane1)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void loginPressBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPressBtnMouseEntered
-        loginPressBtn.setBackground(new Color(0x0D98BA));
-    }//GEN-LAST:event_loginPressBtnMouseEntered
-
-    private void loginPressBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPressBtnMouseExited
-        loginPressBtn.setBackground(new Color(0x00CCCC));
-    }//GEN-LAST:event_loginPressBtnMouseExited
-
-    private void registerPressBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerPressBtnMouseEntered
-        registerPressBtn.setBackground(new Color(0x03C03C));
-    }//GEN-LAST:event_registerPressBtnMouseEntered
-
-    private void registerPressBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerPressBtnMouseExited
-        registerPressBtn.setBackground(new Color(0,153,102));
-    }//GEN-LAST:event_registerPressBtnMouseExited
 
     private void loginPressBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginPressBtnActionPerformed
         LoginForm login = new LoginForm();
@@ -148,11 +130,31 @@ public class Homepage extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_loginPressBtnActionPerformed
 
+    private void loginPressBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPressBtnMouseExited
+        loginPressBtn.setBackground(new Color(0x00CCCC));
+    }//GEN-LAST:event_loginPressBtnMouseExited
+
+    private void loginPressBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginPressBtnMouseEntered
+        loginPressBtn.setBackground(new Color(0x0D98BA));
+    }//GEN-LAST:event_loginPressBtnMouseEntered
+
     private void registerPressBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerPressBtnActionPerformed
         RegisterForm register = new RegisterForm();
         register.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_registerPressBtnActionPerformed
+
+    private void registerPressBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerPressBtnMouseExited
+        registerPressBtn.setBackground(new Color(0,153,102));
+    }//GEN-LAST:event_registerPressBtnMouseExited
+
+    private void registerPressBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerPressBtnMouseEntered
+        registerPressBtn.setBackground(new Color(0x03C03C));
+    }//GEN-LAST:event_registerPressBtnMouseEntered
+
+    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
+
+    }//GEN-LAST:event_logoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -191,11 +193,10 @@ public class Homepage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton loginPressBtn;
     private javax.swing.JLabel logo;
-    private javax.swing.JLabel mainbg;
     private javax.swing.JPanel mainframe;
     private javax.swing.JLabel navbg;
     private javax.swing.JPanel navigation;

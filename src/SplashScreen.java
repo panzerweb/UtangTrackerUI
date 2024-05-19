@@ -1,3 +1,7 @@
+
+import javax.swing.JOptionPane;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -25,20 +29,55 @@ public class SplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BGPANEL = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        modules = new javax.swing.JLabel();
+        percent = new javax.swing.JLabel();
+        loadingBar = new javax.swing.JProgressBar();
+        backgroundimg = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        BGPANEL.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images (600 x 600 px)\\2.png")); // NOI18N
+        BGPANEL.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, -1, 60));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images (600 x 600 px)\\1.png")); // NOI18N
+        BGPANEL.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 650, 490));
+
+        modules.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        modules.setForeground(new java.awt.Color(51, 51, 51));
+        modules.setText("Loading Modules...");
+        BGPANEL.add(modules, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 580, -1, -1));
+
+        percent.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        percent.setForeground(new java.awt.Color(51, 51, 51));
+        percent.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        percent.setText("0%");
+        BGPANEL.add(percent, new org.netbeans.lib.awtextra.AbsoluteConstraints(767, 580, 40, -1));
+
+        loadingBar.setBackground(new java.awt.Color(102, 102, 102));
+        BGPANEL.add(loadingBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 610, 690, 30));
+
+        backgroundimg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\bg.png")); // NOI18N
+        BGPANEL.add(backgroundimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 680));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 922, Short.MAX_VALUE)
+            .addComponent(BGPANEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addComponent(BGPANEL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -69,13 +108,66 @@ public class SplashScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SplashScreen().setVisible(true);
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()){
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        });
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
+            java.util.logging.Logger.getLogger(SplashScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, e);
+        }
+        
+        SplashScreen sp = new SplashScreen();
+        sp.setVisible(true);
+        
+            try {
+                
+                for (int i = 0; i <= 100; i++) {
+                    Thread.sleep(100);
+                    sp.percent.setText(i + "%");
+                    
+                    if (i == 10) {
+                        sp.modules.setText("Loading Modules...");
+                    }
+                    if (i == 20) {
+                        sp.modules.setText("Connecting to Database...");
+                    }
+                    if (i == 50) {
+                        sp.modules.setText("Fetching Data...");
+                    }
+                    if (i == 70) {
+                        sp.modules.setText("Unpacking Resources...");
+                    }
+                    if (i == 80) {
+                        sp.modules.setText("Activating Packages and Frames...");
+                    }
+                    if (i == 100) {
+                        sp.modules.setText("Launching Successful...");
+                        
+                        sp.setVisible(false);
+                        Homepage home = new Homepage();
+                        home.setVisible(true);
+                    }
+                    sp.loadingBar.setValue(i);
+                    
+                    
+                    
+                    
+                    
+                }
+        } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel BGPANEL;
+    private javax.swing.JLabel backgroundimg;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JProgressBar loadingBar;
+    private javax.swing.JLabel modules;
+    private javax.swing.JLabel percent;
     // End of variables declaration//GEN-END:variables
 }

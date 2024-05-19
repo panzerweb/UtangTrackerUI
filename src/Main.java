@@ -1,8 +1,15 @@
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.Font;
 import java.awt.print.PrinterException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -115,7 +122,7 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
+        githubLink = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         balanceFieldDisplay = new javax.swing.JTextField();
@@ -174,6 +181,7 @@ public class Main extends javax.swing.JFrame {
         Transaction.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\transaction.png")); // NOI18N
         Transaction.setText("Transaction");
         Transaction.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(106, 213, 203), 2));
+        Transaction.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Transaction.setFocusPainted(false);
         Transaction.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -191,6 +199,7 @@ public class Main extends javax.swing.JFrame {
         settingPnl.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\setting.png")); // NOI18N
         settingPnl.setText("Settings");
         settingPnl.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(106, 213, 203), 2));
+        settingPnl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         settingPnl.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 settingPnlFocusGained(evt);
@@ -207,6 +216,7 @@ public class Main extends javax.swing.JFrame {
         about.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\info-button.png")); // NOI18N
         about.setText("About");
         about.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(106, 213, 203), 2));
+        about.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         about.setFocusPainted(false);
         about.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -227,6 +237,7 @@ public class Main extends javax.swing.JFrame {
         listBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\to-do-list.png")); // NOI18N
         listBtn.setText("List");
         listBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(106, 213, 203), 2));
+        listBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         listBtn.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 listBtnFocusGained(evt);
@@ -243,6 +254,7 @@ public class Main extends javax.swing.JFrame {
         searchBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\loupe.png")); // NOI18N
         searchBtn.setText("Search");
         searchBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(106, 213, 203), 2));
+        searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchBtn.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 searchBtnFocusGained(evt);
@@ -717,8 +729,14 @@ public class Main extends javax.swing.JFrame {
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("For more information, visit our");
 
-        jLabel26.setForeground(new java.awt.Color(51, 255, 204));
-        jLabel26.setText("Github Repository");
+        githubLink.setForeground(new java.awt.Color(51, 255, 204));
+        githubLink.setText("Github Repository");
+        githubLink.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        githubLink.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                githubLinkMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout settingPanelLayout = new javax.swing.GroupLayout(settingPanel);
         settingPanel.setLayout(settingPanelLayout);
@@ -749,7 +767,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(181, 181, 181)
                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(githubLink, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         settingPanelLayout.setVerticalGroup(
@@ -775,7 +793,7 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
                 .addGroup(settingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(jLabel26))
+                    .addComponent(githubLink))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -892,6 +910,7 @@ public class Main extends javax.swing.JFrame {
 
         logoutBtn.setBackground(new java.awt.Color(255, 102, 102));
         logoutBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\logout.png")); // NOI18N
+        logoutBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutBtnActionPerformed(evt);
@@ -1148,6 +1167,7 @@ public class Main extends javax.swing.JFrame {
         profile.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(106, 213, 203), 2));
         profile.setBorderPainted(false);
         profile.setContentAreaFilled(false);
+        profile.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         profile.setFocusPainted(false);
         profile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1540,6 +1560,15 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cNameFieldActionPerformed
 
+    private void githubLinkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_githubLinkMouseClicked
+    try {
+        Desktop desktop = java.awt.Desktop.getDesktop();
+        URI uri = new URI("https://github.com/panzerweb/UtangTrackerUI.git");
+        desktop.browse(uri);
+    } catch (IOException | URISyntaxException e) {
+    }
+    }//GEN-LAST:event_githubLinkMouseClicked
+
     
 
      private void resetTabBorders() {
@@ -1654,6 +1683,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton deleteAllRows;
     private javax.swing.JButton deleteMultipleRows;
     private javax.swing.JLabel dollarCurr;
+    private javax.swing.JLabel githubLink;
     private javax.swing.JTextField itemNameField;
     private javax.swing.JLabel itemNameLabel;
     private javax.swing.JButton jButton1;
@@ -1676,7 +1706,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

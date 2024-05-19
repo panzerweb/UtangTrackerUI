@@ -43,6 +43,7 @@ public class LoginForm extends javax.swing.JFrame {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         logo = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
@@ -61,25 +62,29 @@ public class LoginForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jSplitPane1.setDividerLocation(120);
+        jSplitPane1.setDividerLocation(300);
         jSplitPane1.setDividerSize(0);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jPanel1.setBackground(new java.awt.Color(45, 225, 194));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images\\2.png")); // NOI18N
+        jLabel7.setText("jLabel1");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 310, 40));
+
         logo.setFont(new java.awt.Font("Corbel Light", 1, 48)); // NOI18N
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\logo\\logo.png")); // NOI18N
+        logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images\\1.png")); // NOI18N
         logo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logoMouseClicked(evt);
             }
         });
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 900, 120));
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 350, 260));
 
         bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
-        jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -2, 910, 120));
+        jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, -2, 910, 320));
 
         jSplitPane1.setTopComponent(jPanel1);
 
@@ -90,18 +95,20 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 190, 171), 2, true));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Email Address");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 130, -1));
 
         emailField.setBackground(new java.awt.Color(45, 225, 194));
-        jPanel2.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 480, 40));
+        jPanel2.add(emailField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 130, 30));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Password");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 130, -1));
 
         showPassword.setBackground(new java.awt.Color(106, 213, 203));
         showPassword.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\eye.png")); // NOI18N
@@ -115,7 +122,7 @@ public class LoginForm extends javax.swing.JFrame {
                 showPasswordActionPerformed(evt);
             }
         });
-        jPanel2.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 60, 50));
+        jPanel2.add(showPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 30, 30));
 
         loginBtn.setBackground(new java.awt.Color(0, 204, 204));
         loginBtn.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -125,20 +132,22 @@ public class LoginForm extends javax.swing.JFrame {
                 loginBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 120, 40));
+        jPanel2.add(loginBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 130, 30));
 
         signUpBtn.setBackground(new java.awt.Color(51, 255, 153));
-        signUpBtn.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        signUpBtn.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         signUpBtn.setText("Signup");
         signUpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signUpBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(signUpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 120, 40));
+        jPanel2.add(signUpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 130, 20));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Don't have an account?");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 320, -1, -1));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 130, -1));
 
         hidePassword.setBackground(new java.awt.Color(106, 213, 203));
         hidePassword.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\hidden.png")); // NOI18N
@@ -152,7 +161,7 @@ public class LoginForm extends javax.swing.JFrame {
                 hidePasswordKeyPressed(evt);
             }
         });
-        jPanel2.add(hidePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 240, 60, 50));
+        jPanel2.add(hidePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 30, 30));
 
         passField.setBackground(new java.awt.Color(45, 225, 194));
         passField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -163,17 +172,17 @@ public class LoginForm extends javax.swing.JFrame {
                 passFieldKeyTyped(evt);
             }
         });
-        jPanel2.add(passField, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 420, 50));
+        jPanel2.add(passField, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 130, 30));
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Login");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 10, 650, 40));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 40));
 
-        loginPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 67, 667, 437));
+        loginPanel.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 220, 290));
 
         jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\bg.png")); // NOI18N
-        loginPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 600));
+        loginPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 420));
 
         jSplitPane1.setRightComponent(loginPanel);
 
@@ -418,6 +427,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
