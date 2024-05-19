@@ -152,7 +152,6 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listTable = new javax.swing.JTable();
         deleteMultipleRows = new javax.swing.JButton();
-        deleteAllRows = new javax.swing.JButton();
         printbtn = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -791,9 +790,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(printbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 227, Short.MAX_VALUE)
-                .addGroup(settingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel25)
-                    .addComponent(githubLink))
+                .addGroup(settingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(githubLink, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel25))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1042,11 +1041,6 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        deleteAllRows.setBackground(new java.awt.Color(232, 57, 95));
-        deleteAllRows.setForeground(new java.awt.Color(255, 255, 255));
-        deleteAllRows.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\remove.png")); // NOI18N
-        deleteAllRows.setText("Delete All");
-
         printbtn.setBackground(new java.awt.Color(0, 153, 153));
         printbtn.setForeground(new java.awt.Color(255, 255, 255));
         printbtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\icons\\new black icons\\printing.png")); // NOI18N
@@ -1110,16 +1104,14 @@ public class Main extends javax.swing.JFrame {
                     .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, listPanelLayout.createSequentialGroup()
-                            .addComponent(printbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(printbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
-                            .addComponent(deleteMultipleRows, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(deleteAllRows, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(deleteMultipleRows, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(listPanelLayout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(78, 86, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         listPanelLayout.setVerticalGroup(
@@ -1133,7 +1125,6 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteAllRows)
                     .addComponent(deleteMultipleRows, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(printbtn))
                 .addGap(52, 52, 52)
@@ -1680,7 +1671,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel cNameLabel1;
     private javax.swing.JButton calculateTransaction;
     private javax.swing.JComboBox<String> currencybox;
-    private javax.swing.JButton deleteAllRows;
     private javax.swing.JButton deleteMultipleRows;
     private javax.swing.JLabel dollarCurr;
     private javax.swing.JLabel githubLink;
