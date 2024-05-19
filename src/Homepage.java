@@ -93,7 +93,7 @@ public class Homepage extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images\\2.png")); // NOI18N
         jLabel1.setText("jLabel1");
-        navigation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 310, 40));
+        navigation.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 310, 40));
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images\\1.png")); // NOI18N
@@ -102,7 +102,7 @@ public class Homepage extends javax.swing.JFrame {
                 logoMouseClicked(evt);
             }
         });
-        navigation.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 380, 260));
+        navigation.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 380, 260));
 
         navbg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
         navigation.add(navbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 300));

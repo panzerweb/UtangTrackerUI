@@ -68,7 +68,7 @@ public class RegisterForm extends javax.swing.JFrame {
 
         jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\images\\Utang Tracker Images\\2.png")); // NOI18N
         jLabel8.setText("jLabel1");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 310, 40));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, 310, 40));
 
         logo.setFont(new java.awt.Font("Corbel Light", 1, 48)); // NOI18N
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -78,7 +78,7 @@ public class RegisterForm extends javax.swing.JFrame {
                 logoMouseClicked(evt);
             }
         });
-        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 310, 250));
+        jPanel1.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 310, 250));
 
         bg.setIcon(new javax.swing.ImageIcon("C:\\Users\\User\\Documents\\NetBeansProjects\\UtangTrackerUI\\Assets\\Assets.png")); // NOI18N
         jPanel1.add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 300));
