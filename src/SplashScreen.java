@@ -143,9 +143,10 @@ public class SplashScreen extends javax.swing.JFrame {
                     if (i == 80) {
                         sp.modules.setText("Activating Packages and Frames...");
                     }
-                    if (i == 100) {
+                    if (i == 95) {
                         sp.modules.setText("Launching Successful...");
-                        
+                    }
+                    if(i == 100){
                         sp.setVisible(false);
                         Homepage home = new Homepage();
                         home.setVisible(true);
